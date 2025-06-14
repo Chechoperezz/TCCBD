@@ -2,6 +2,7 @@ package Service;
 
 import Entities.Alquiler;
 import Repository.AlquilerRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

@@ -2,6 +2,7 @@ package Controller;
 
 import Entities.Inventario;
 import Service.InventarioService;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
