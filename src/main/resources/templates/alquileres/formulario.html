@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nuevo Alquiler</title>
+</head>
+<body>
+
+<h2>Nuevo Alquiler</h2>
+
+<form th:action="@{/alquileres/guardar}" th:object="${alquilerForm}" method="post">
+
+    <label>Cliente:</label>
+    <select th:field="*{idCliente}">
+        <option th:each="cliente : ${clientes}" th:value="${cliente.idCliente}" th:text="${cliente.nombre}"></option>
+    </select><br/><br/>
+
+    <label>Fecha Alquiler:</label>
+    <input type="date" th:field="*{fechaAlquiler}" /><br/><br/>
+
+    <label>Fecha Devolución Prevista:</label>
+    <input type="date" th:field="*{fechaDevolucionPrevista}" /><br/><br/>
+
+    <h3>Items a Alquilar:</h3>
+
+    <div th:each="inv, iterStat : ${inventario}">
+        <input type="checkbox" th:name="'items[' + ${iterStat.index} + '].idItem'" th:value="${inv.idItem}" />
+        <span th:text="${inv.titulo}"></span>
+        - Cantidad disponible: <span th:text="${inv.cantidadDisponible}"></span><br/>
+        Cantidad a alquilar: <input type="number" th:name="'items[' + ${iterStat.index} + '].cantidad'" min="0" max="${inv.cantidadDisponible}"/><br/><br/>
+    </div>
+
+    <button type="submit">Guardar Alquiler</button>
+</form>
+
+<a th:href="@{/alquileres}">Cancelar</a>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login - Bodega del Saber</title>
+</head>
+<body>
+<h2>Login</h2>
+<form th:action="@{/login}" method="post">
+    <div>
+        <label>Usuario:</label>
+        <input type="text" name="username" />
+    </div>
+    <div>
+        <label>Contraseña:</label>
+        <input type="password" name="password" />
+    </div>
+    <div>
+        <button type="submit">Entrar</button>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Devoluciones Pendientes</title>
+</head>
+<body>
+
+<h2>Alquileres Pendientes</h2>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Cliente</th>
+    <th>Fecha Alquiler</th>
+    <th>Fecha Prevista Devolución</th>
+    <th>Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="alquiler : ${alquileres}">
+    <td th:text="${alquiler.cliente.nombre}"></td>
+    <td th:text="${alquiler.fechaAlquiler}"></td>
+    <td th:text="${alquiler.fechaDevolucionPrevista}"></td>
+    <td>
+      <a th:href="@{'/alquileres/devolver/' + ${alquiler.idAlquiler}}">Registrar Devolución</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<a th:href="@{/home}">Volver al Inicio</a>
+
+</body>
+</html>

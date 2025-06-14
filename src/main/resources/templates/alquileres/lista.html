@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Alquileres</title>
+</head>
+<body>
+
+<h2>Alquileres</h2>
+
+<a th:href="@{/alquileres/nuevo}">Nuevo Alquiler</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Cliente</th>
+        <th>Fecha Alquiler</th>
+        <th>Fecha Devolución Prevista</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="alquiler : ${alquileres}">
+        <td th:text="${alquiler.cliente.nombre}"></td>
+        <td th:text="${alquiler.fechaAlquiler}"></td>
+        <td th:text="${alquiler.fechaDevolucionPrevista}"></td>
+        <td th:text="${alquiler.estado}"></td>
+        <td>
+            <a th:href="@{'/alquileres/eliminar/' + ${alquiler.idAlquiler}}" onclick="return confirm('¿Seguro?')">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/home}">Volver al Inicio</a>
+
+</body>
+</html>

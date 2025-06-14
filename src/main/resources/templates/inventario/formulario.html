@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de Inventario</title>
+</head>
+<body>
+
+<h2 th:text="${item.idItem != null ? 'Editar Item' : 'Nuevo Item'}"></h2>
+
+<form th:action="@{/inventario/guardar}" th:object="${item}" method="post">
+    <input type="hidden" th:field="*{idItem}" />
+
+    <label>Tipo:</label>
+    <select th:field="*{tipoItem}">
+        <option th:each="tipo : ${tipos}" th:value="${tipo}" th:text="${tipo}"></option>
+    </select><br/>
+
+    <label>Título:</label>
+    <input type="text" th:field="*{titulo}" /><br/>
+
+    <label>Descripción:</label>
+    <textarea th:field="*{descripcion}"></textarea><br/>
+
+    <label>Cantidad Total:</label>
+    <input type="number" th:field="*{cantidadTotal}" /><br/>
+
+    <label>Cantidad Disponible:</label>
+    <input type="number" th:field="*{cantidadDisponible}" /><br/>
+
+    <button type="submit">Guardar</button>
+</form>
+
+<a th:href="@{/inventario}">Cancelar</a>
+
+</body>
+</html>

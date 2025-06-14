@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Inventario</title>
+</head>
+<body>
+
+<h2>Inventario</h2>
+
+<a th:href="@{/inventario/nuevo}">Nuevo Item</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Tipo</th>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Total</th>
+        <th>Disponible</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${inventario}">
+        <td th:text="${item.tipoItem}"></td>
+        <td th:text="${item.titulo}"></td>
+        <td th:text="${item.descripcion}"></td>
+        <td th:text="${item.cantidadTotal}"></td>
+        <td th:text="${item.cantidadDisponible}"></td>
+        <td>
+            <a th:href="@{'/inventario/editar/' + ${item.idItem}}">Editar</a> |
+            <a th:href="@{'/inventario/eliminar/' + ${item.idItem}}" onclick="return confirm('¿Seguro?')">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/home}">Volver al Inicio</a>
+
+</body>
+</html>

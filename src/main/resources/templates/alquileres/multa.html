@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Resultado Devolución</title>
+</head>
+<body>
+
+<h2>Devolución registrada</h2>
+
+<p th:if="${multa > 0}">
+  El cliente tiene una multa de: <strong th:text="${multa}"></strong> COP
+</p>
+
+<p th:if="${multa == 0}">
+  No se generó ninguna multa. ¡Todo en orden!
+</p>
+
+<a th:href="@{/alquileres/pendientes}">Volver a pendientes</a>
+<br/>
+<a th:href="@{/home}">Inicio</a>
+
+</body>
+</html>
